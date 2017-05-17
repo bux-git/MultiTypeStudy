@@ -35,7 +35,7 @@ public class MultiSelectActivity extends MenuBaseActivity {
     private List<Object> items;
 
     private List<SquareItem> mSelects;
-    int top, bottom, driveHeight, distanceY;
+    int top, bottom, driveHeight, distanceY,height;
     ValueAnimator animatorMode;
 
     @Override
@@ -88,6 +88,7 @@ public class MultiSelectActivity extends MenuBaseActivity {
                     public void onGlobalLayout() {
                         top = fab.getTop();
                         bottom = fab.getBottom();
+                        height=fab.getHeight();
                         distanceY = driveHeight - top;
                         Log.d(TAG, "onGlobalLayout: top" + top + " bottom:" + bottom+"  height:"+fab.getHeight());
                         fab.getViewTreeObserver().removeOnGlobalLayoutListener(this);
@@ -110,7 +111,7 @@ public class MultiSelectActivity extends MenuBaseActivity {
     }
 
 
-
+    private boolean isStatus;
     /**
      * 模版动画效果
      *
@@ -124,43 +125,44 @@ public class MultiSelectActivity extends MenuBaseActivity {
             animatorMode.setDuration(500);
         }
 
-
-        Log.d(TAG, "modeOutInAnimator: running:"+animatorMode.isRunning()+" started:"+animatorMode.isStarted());
         if (!animatorMode.isRunning() && !animatorMode.isStarted()) {
-            top = view.getTop();
-            bottom = view.getBottom();
-            Log.d(TAG, "modeOutInAnimator: " + top + "  bottom:" + bottom);
+            Log.d(TAG, "modeOutInAnimator: " + top + "  bottom:" + bottom+"  distanceY:"+distanceY);
 
-            if(top>=driveHeight&&isDown)return;//已经处于屏幕下方
-            if(top<=(driveHeight-distanceY)&&!isDown)return;//已经处于屏幕上方
+            if(isStatus&&isDown)return;//已经处于屏幕下方
+            if(!isStatus&&!isDown)return;//已经处于屏幕上方
+
+
             animatorMode.removeAllUpdateListeners();
             if (isDown) {
+                isStatus=true;
+                Log.d(TAG, "modeOutInAnimator: isDown:"+isDown);
                 animatorMode.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                     @Override
                     public void onAnimationUpdate(ValueAnimator animation) {
                         int curValue = (int) animation.getAnimatedValue();
-                        float changeValue=1-(curValue*1.4f/(float)distanceY);
+                        float changeValue=1-(curValue/(float)distanceY);
 
-                        view.layout(view.getLeft(), top + curValue, view.getRight(), curValue + bottom);
+                       view.layout(view.getLeft(), top + curValue, view.getRight(), curValue + bottom);
                         view.setAlpha(changeValue);
                         view.setScaleX(changeValue);
                         view.setScaleY(changeValue);
-                        Log.d(TAG, "onAnimationUpdate: "+changeValue);
+                        //Log.d(TAG, "onAnimationUpdate: "+changeValue);
                     }
                 });
             } else {
+                isStatus=false;
+                Log.d(TAG, "modeOutInAnimator: isDown:"+isDown);
                 animatorMode.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                     @Override
                     public void onAnimationUpdate(ValueAnimator animation) {
                         int curValue = (int) animation.getAnimatedValue();
                         float changeValue=(curValue/(float)distanceY);
 
-                        view.layout(view.getLeft(), top - curValue, view.getRight(),bottom-curValue);
+                        view.layout(view.getLeft(), driveHeight - curValue, view.getRight(),bottom+distanceY-curValue);
                         view.setAlpha(changeValue);
                         view.setScaleX(changeValue);
                         view.setScaleY(changeValue);
 
-                        Log.d(TAG, "onAnimationUpdate: "+changeValue);
                     }
                 });
 
