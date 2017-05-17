@@ -13,9 +13,14 @@
         android:padding="8dp"
         android:paddingLeft="8dp"
         android:clipToPadding="false"/>
-
     <Button
-        style="@style/FAB.Done"
+        android:layout_width="72dp"
+        android:layout_height="76dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/ic_fab_done"
         android:id="@+id/fab"/>
 
 </RelativeLayout>
