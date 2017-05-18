@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.dqr.www.multitypestudy.blibli.BlibliActivity;
 import com.dqr.www.multitypestudy.multi_select.MultiSelectActivity;
 import com.dqr.www.multitypestudy.normal.NormalActivity;
 
@@ -32,6 +33,9 @@ public class MenuBaseActivity extends AppCompatActivity {
                 break;
             case R.id.MultiSelectActivity:
                 intent.setClass(this, MultiSelectActivity.class);
+                break;
+            case R.id.BilibiliActivity:
+                intent.setClass(this, BlibliActivity.class);
                 break;
         }
         startActivity(intent);
