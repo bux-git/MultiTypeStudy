@@ -36,6 +36,15 @@ public class BlibliActivity extends MenuBaseActivity {
                 , new PostItem(R.drawable.img_10, text + "img_10")
                 , new PostItem(R.drawable.img_11, text + "img_11")
         };
+        List<PostItem> postList = new ArrayList<>();
+        {
+            postList.add(mPostItems[0]);
+            postList.add(mPostItems[2]);
+            postList.add(mPostItems[3]);
+            postList.add(mPostItems[1]);
+            postList.add(mPostItems[0]);
+            postList.add(mPostItems[2]);
+        }
     }
 
     @Override
@@ -48,6 +57,7 @@ public class BlibliActivity extends MenuBaseActivity {
         items = new ArrayList<>();
         mAdapter.register(CategoryItem.class, new CategoryItemViewBinder());
         mAdapter.register(PostItem.class, new PostItemViewBinder());
+        mAdapter.register(PostList.class, new PostListViewBinder());
 
         GridLayoutManager layoutManager = new GridLayoutManager(this, SPAN_COUNT);
         GridLayoutManager.SpanSizeLookup spanSizeLookup= new GridLayoutManager.SpanSizeLookup() {
@@ -77,6 +87,8 @@ public class BlibliActivity extends MenuBaseActivity {
             items.add(jsonData.mPostItems[1]);
             items.add(jsonData.mPostItems[0]);
             items.add(jsonData.mPostItems[2]);
+
+            items.add(new PostList(jsonData.postList));
         }
         mAdapter.setItems(items);
         mAdapter.notifyDataSetChanged();
