@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import com.dqr.www.multitypestudy.blibli.BlibliActivity;
 import com.dqr.www.multitypestudy.multi_select.MultiSelectActivity;
 import com.dqr.www.multitypestudy.normal.NormalActivity;
+import com.dqr.www.multitypestudy.one2many.OneToManyActivity;
 
 /**
  * Description：
@@ -36,6 +37,9 @@ public class MenuBaseActivity extends AppCompatActivity {
                 break;
             case R.id.BilibiliActivity:
                 intent.setClass(this, BlibliActivity.class);
+                break;
+            case R.id.OneDataToManyActivity:
+                intent.setClass(this,OneToManyActivity.class);
                 break;
         }
         startActivity(intent);
