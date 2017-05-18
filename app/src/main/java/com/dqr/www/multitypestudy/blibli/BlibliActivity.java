@@ -50,7 +50,7 @@ public class BlibliActivity extends MenuBaseActivity {
         mAdapter.register(PostItem.class, new PostItemViewBinder());
 
         GridLayoutManager layoutManager = new GridLayoutManager(this, SPAN_COUNT);
-        layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+        GridLayoutManager.SpanSizeLookup spanSizeLookup= new GridLayoutManager.SpanSizeLookup() {
             @Override
             public int getSpanSize(int position) {
                 if(items.get(position) instanceof PostItem){
@@ -60,8 +60,12 @@ public class BlibliActivity extends MenuBaseActivity {
                 }
 
             }
-        });
+        };
+
+        PostItemDecoration decoration = new PostItemDecoration(getResources().getDimensionPixelSize(R.dimen.normal_space),spanSizeLookup);
+        layoutManager.setSpanSizeLookup(spanSizeLookup);
         recyclerView.setLayoutManager(layoutManager);
+        recyclerView.addItemDecoration(decoration);
         recyclerView.setAdapter(mAdapter);
 
         JsonData jsonData = new JsonData();
