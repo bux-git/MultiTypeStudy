@@ -15,5 +15,6 @@ public class Weibo {
         this.user = user;
         mWeiboContent = weiboContent;
         this.createTime = "Just now";
+
     }
 }

@@ -47,6 +47,7 @@ public class WeiboActivity extends MenuBaseActivity {
                     @Override
                     public int index(@NonNull Weibo weibo) {
                         if(weibo.mWeiboContent instanceof SimpleText){
+
                             return 0;
                         }else if(weibo.mWeiboContent instanceof SimpleImge){
                             return 1;
