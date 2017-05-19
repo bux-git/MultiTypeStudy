@@ -19,10 +19,10 @@ import me.drakeet.multitype.ItemViewBinder;
  * Date： 2017-05-18 20:19
  */
 
-public abstract class WeiboFrameBinder<Content extends WeiboContent, SubViewHolder extends ContentHolder>
+public abstract class WeiboFrameBinder<Content extends WeiboContent, SubViewHolder extends RecyclerView.ViewHolder>
         extends ItemViewBinder<Weibo, WeiboFrameBinder.FrameHolder> {
 
-    protected abstract ContentHolder onCreateContentViewHolder(LayoutInflater inflater, ViewGroup parent);
+    protected abstract RecyclerView.ViewHolder onCreateContentViewHolder(LayoutInflater inflater, ViewGroup parent);
 
     protected abstract void onBindContentViewHolder(SubViewHolder holder, Content content);
 
@@ -30,7 +30,7 @@ public abstract class WeiboFrameBinder<Content extends WeiboContent, SubViewHold
     @Override
     protected FrameHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
         View view = inflater.inflate(R.layout.item_weibo_frame, parent, false);
-        ContentHolder subViewHolder = onCreateContentViewHolder(inflater, parent);
+        RecyclerView.ViewHolder subViewHolder = onCreateContentViewHolder(inflater, parent);
         return new FrameHolder(view,subViewHolder);
     }
 
@@ -49,9 +49,9 @@ public abstract class WeiboFrameBinder<Content extends WeiboContent, SubViewHold
         TextView userName;
         FrameLayout container;
         TextView createTime;
-        ContentHolder subViewHolder;
+        RecyclerView.ViewHolder subViewHolder;
 
-        public FrameHolder(View itemView,ContentHolder subViewHolder) {
+        public FrameHolder(View itemView,RecyclerView.ViewHolder subViewHolder) {
             super(itemView);
             avatar = findViewById(R.id.avatar);
             userName = findViewById(R.id.username);
@@ -59,7 +59,6 @@ public abstract class WeiboFrameBinder<Content extends WeiboContent, SubViewHold
             createTime = findViewById(R.id.create_time);
             container.addView(subViewHolder.itemView);
             this.subViewHolder=subViewHolder;
-            this.subViewHolder.mFrameHolder=this;
         }
 
         private <T extends View> T findViewById(int resId) {
