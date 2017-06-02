@@ -13,11 +13,8 @@ import com.dqr.www.multitypestudy.R;
 
 import me.drakeet.multitype.ItemViewBinder;
 
-/**
- * Description：
- * Author：LiuYM
- * Date： 2017-06-02 20:39
- */
+
+
 
 public abstract class WeiboViewBinder
         extends ItemViewBinder<WeiBo, WeiboViewBinder.WeiBoFrameViewHolder> {

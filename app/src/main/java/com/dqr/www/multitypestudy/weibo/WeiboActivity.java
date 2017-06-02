@@ -35,7 +35,7 @@ public class WeiboActivity extends MenuBaseActivity {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rl_content);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-       mItems = new ArrayList<>();
+        mItems = new ArrayList<>();
         mAdapter = new MultiTypeAdapter();
         mAdapter.register(WeiBo.class)
                 .to(new TextItemViewBinder())
@@ -46,10 +46,10 @@ public class WeiboActivity extends MenuBaseActivity {
                     }
                 });
 
-        User user = new User("Bux",R.drawable.user_avatar);
-        for(int i=0;i<20;i++){
-            TextItem textItem = new TextItem("Simple text:"+i);
-            WeiBo weiBo = new WeiBo(user,textItem);
+        User user = new User("Bux", R.drawable.user_avatar);
+        for (int i = 0; i < 20; i++) {
+            TextItem textItem = new TextItem("Simple text:" + i);
+            WeiBo weiBo = new WeiBo(user, textItem);
             mItems.add(weiBo);
         }
 

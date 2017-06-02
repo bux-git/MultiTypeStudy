@@ -11,8 +11,7 @@ import com.dqr.www.multitypestudy.R;
 import com.dqr.www.multitypestudy.weibo.WeiBoContent;
 import com.dqr.www.multitypestudy.weibo.WeiboViewBinder;
 
-
-public class TextItemViewBinder extends WeiboViewBinder{
+public class TextItemViewBinder extends WeiboViewBinder {
 
 
     @Override

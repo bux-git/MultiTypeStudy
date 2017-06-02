@@ -13,7 +13,8 @@ public class TextItem extends WeiBoContent {
 
     public String text;
 
-    public TextItem(String content_type) {
-        super(content_type);
+    public TextItem(String text) {
+        super("text_image");
+        this.text=text;
     }
 }
