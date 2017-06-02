@@ -39,7 +39,6 @@ public class ItemDecoration extends RecyclerView.ItemDecoration {
                 outRect.left = space;
                 outRect.right = space;
             } else {
-
                 outRect.left = space;
                 if ("2,5,8,11,14".contains(itemBean.index+"")) {
                     outRect.right = space;
