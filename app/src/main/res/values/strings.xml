@@ -19,4 +19,35 @@
     <string name="normal_app_name">MultiType</string>
     <string name="bilibili_app_name">MT: Bilibili</string>
     <string name="multi_grid_app_name">MT: MultiGrid</string>
+
+    <string name="mine_tv_diary_title">成长路程</string>
+    <string name="mine_tv_diary_detail">记录生活，分享心情</string>
+
+    <string name="mine_tv_new_year_video_title">祝福视频</string>
+    <string name="mine_tv_new_year_video_detail">送礼，不如亲口对他说祝福</string>
+
+    <string name="mine_tv_yx_video_title">祝福视频</string>
+    <string name="yx_video_item_title">新年愿望</string>
+    <string name="mine_tv_yx_video_detail">一碗汤圆，千万思念</string>
+
+    <string name="mine_tv_album_title">时光相册</string>
+    <string name="mine_tv_album_detail">将时光定格在此刻</string>
+
+    <string name="mine_tv_video_title">生活视频</string>
+    <string name="mine_tv_video_detail">记录生活的每个瞬间</string>
+
+    <string name="mine_tv_card_title">地球人名片</string>
+    <string name="mine_tv_card_detail">快来表达你自己吧</string>
+
+    <string name="mine_tv_personal_title">个人中心</string>
+    <string name="mine_tv_personal_detail">猜猜会发现什么</string>
+
+    <string name="mine_tv_friend_title">激活中心</string>
+    <string name="mine_tv_friend_detail">拥有更多专属功能</string>
+
+    <string name="mine_tv_smart_life_title">智能生活</string>
+    <string name="mine_tv_smart_life_detail">足不出户,享受便利</string>
+
+    <string name="mine_tv_yield">地球人收益</string>
+    <string name="mine_tv_yield_detail">分享即可赚取收益</string>
 </resources>

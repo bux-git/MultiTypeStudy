@@ -25,4 +25,16 @@
     <dimen name="normal_space">12dp</dimen>
     <dimen name="small_space">6dp</dimen>
     <dimen name="post_image_height">96dp</dimen>
+
+    <!-- 首页 我的 轮播图高度 -->
+    <dimen name="banners_height">240dp</dimen>
+    <dimen name="horizontal_height_home_mine">100dp</dimen>
+
+    <!-- mine -->
+    <dimen name="mine_text_size_small">12sp</dimen>
+    <dimen name="mine_text_size_big">12sp</dimen>
+    <dimen name="mine_tv_text_size_bg">14sp</dimen>
+    <dimen name="mine_tv_text_margin_top">5dp</dimen>
+    <dimen name="mine_tv_text_margin_Bottom">6dp</dimen>
+    <dimen name="mine_normal_space">5dp</dimen>
 </resources>

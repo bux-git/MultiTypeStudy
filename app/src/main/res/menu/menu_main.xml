@@ -32,4 +32,8 @@
         android:id="@+id/WeiboActivity"
         android:title="WeiboActivity"
         app:showAsAction="never"/>
+    <item
+        android:id="@+id/MineActivity"
+        android:title="MineActivity"
+        app:showAsAction="never"/>
 </menu>

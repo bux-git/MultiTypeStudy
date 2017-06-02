@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp">
+
+    <ImageView
+        android:id="@+id/iv_bg"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:scaleType="centerCrop"
+        tools:background="@drawable/bg_mine_friend"/>
+
+    <Button
+        android:id="@+id/btn_edit"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/ic_mine_edit"/>
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_bg"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/mine_tv_text_margin_top"
+        android:text="@string/mine_tv_friend_title"
+        android:textColor="@color/black_2"
+        android:textSize="@dimen/mine_tv_text_size_bg"/>
+
+    <TextView
+        android:id="@+id/tv_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/mine_tv_text_margin_Bottom"
+        android:text="@string/mine_tv_friend_detail"
+        android:textColor="@color/black5"
+        android:textSize="@dimen/mine_text_size_big"/>
+</RelativeLayout>

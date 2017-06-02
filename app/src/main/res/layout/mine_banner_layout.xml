@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 轮播图 -->
+<com.dqr.www.multitypestudy.widget.banner.Banner
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/banner_container"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/banners_height"
+    app:default_image="@drawable/bg_banner_loading"
+    app:delay_time="5000"
+    app:image_scale_type="center_crop"
+    app:indicator_drawable_selected="@drawable/banner_selected_radius"/>

@@ -21,4 +21,13 @@
     <color name="colorAccent">#FF4081</color>
     <color name="pink">#E07679</color>
     <color name="material_text_primary">#de000000</color>
+    <color name="main_color">#5CB85C</color>
+    <color name="black_3">#333333</color>
+    <color name="black_alpha_1f">#1f000000</color>
+    <color name="color_f5">#f5f5f5</color>
+    <color name="black_6">#666666</color>
+    <color name="black_9">#999999</color>
+    <color name="pressed_color">#f3f3f3</color>
+    <color name="black5">#8f8f8f</color>
+    <color name="black_2">#434343</color>
 </resources>

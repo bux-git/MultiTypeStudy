@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+
+                android:layout_height="90dp"
+                android:layout_marginBottom="10dp">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="6dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/color_f5"></View>
+    <RelativeLayout
+        android:id="@+id/rl_personal_info"
+        android:layout_width="match_parent"
+        android:layout_height="78dp"
+        android:layout_centerVertical="true"
+        android:background="@drawable/list_item_selector">
+        <ImageView
+            android:id="@+id/iv_mine_user_ico"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            tools:src="@drawable/user_avatar"/>
+        <LinearLayout android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_centerVertical="true"
+                      android:layout_toRightOf="@id/iv_mine_user_ico"
+                      android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_earth_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/black_6"
+                android:textSize="14sp"
+                tools:text="AA0000000"/>
+
+
+            <TextView
+                android:id="@+id/tv_nice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black_9"
+                android:textSize="14sp"
+                tools:text="N/N"/>
+
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/iv_scan_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="24dp"
+            android:src="@drawable/ic_mine_scan_code"/>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="6dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/color_f5"></View>
+
+</RelativeLayout>
