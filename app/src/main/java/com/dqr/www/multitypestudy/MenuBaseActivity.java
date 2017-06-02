@@ -10,6 +10,7 @@ import com.dqr.www.multitypestudy.mine.MineActivity;
 import com.dqr.www.multitypestudy.multi_select.MultiSelectActivity;
 import com.dqr.www.multitypestudy.normal.NormalActivity;
 import com.dqr.www.multitypestudy.one2many.OneToManyActivity;
+import com.dqr.www.multitypestudy.weibo.WeiboActivity;
 
 
 /**
@@ -44,7 +45,7 @@ public class MenuBaseActivity extends AppCompatActivity {
                 intent.setClass(this,OneToManyActivity.class);
                 break;
             case R.id.WeiboActivity:
-                //intent.setClass(this,WeiboActivity.class);
+                intent.setClass(this,WeiboActivity.class);
                 break;
             case R.id.MineActivity:
                 intent.setClass(this, MineActivity.class);
