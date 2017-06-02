@@ -1,5 +1,8 @@
 package com.dqr.www.multitypestudy.weibo;
 
+import android.support.annotation.DrawableRes;
+import android.support.annotation.NonNull;
+
 /**
  * Description：
  * Author：LiuYM
@@ -8,27 +11,15 @@ package com.dqr.www.multitypestudy.weibo;
 
 public class User {
 
-    private String nick;
-    private int avatar;
 
-    public User(String nick, int avatar) {
-        this.nick = nick;
-        this.avatar = avatar;
-    }
+    @NonNull
+    public String name;
+    @DrawableRes
+    public int avatar;
 
-    public String getNick() {
-        return nick;
-    }
 
-    public void setNick(String nick) {
-        this.nick = nick;
-    }
-
-    public int getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(int avatar) {
+    public User(@NonNull String name, int avatar) {
+        this.name = name;
         this.avatar = avatar;
     }
 }

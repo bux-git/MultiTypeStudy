@@ -1,5 +1,7 @@
 package com.dqr.www.multitypestudy.weibo;
 
+import android.support.annotation.NonNull;
+
 /**
  * Description：
  * Author：LiuYM
@@ -7,13 +9,22 @@ package com.dqr.www.multitypestudy.weibo;
  */
 
 public class WeiBo {
-    public User user;
-    public WeiBoContent content;
-    public String createTime;
 
-    public WeiBo(User user, WeiBoContent content) {
+    @NonNull
+    public User user;
+    @NonNull public WeiBoContent content;
+    @NonNull public String createTime;
+    /* ... id, counts, etc. */
+
+
+    public WeiBo(@NonNull User user, @NonNull WeiBoContent content) {
         this.user = user;
         this.content = content;
-        this.createTime = "Just Now";
+        this.createTime = "Just now";
+    }
+
+
+    @Override public String toString() {
+        return "content: " + content.getClass().getSimpleName();
     }
 }

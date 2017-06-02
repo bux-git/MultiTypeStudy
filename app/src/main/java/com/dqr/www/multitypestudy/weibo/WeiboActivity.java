@@ -17,6 +17,8 @@ import java.util.List;
 import me.drakeet.multitype.Linker;
 import me.drakeet.multitype.MultiTypeAdapter;
 
+import static me.drakeet.multitype.MultiTypeAsserts.assertAllRegistered;
+
 /**
  * Description：
  * Author：LiuYM
@@ -55,6 +57,6 @@ public class WeiboActivity extends MenuBaseActivity {
 
         mAdapter.setItems(mItems);
         recyclerView.setAdapter(mAdapter);
-
+        assertAllRegistered(mAdapter, mItems);
     }
 }

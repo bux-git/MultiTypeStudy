@@ -1,5 +1,6 @@
 package com.dqr.www.multitypestudy.weibo;
 
+
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,43 +14,40 @@ import com.dqr.www.multitypestudy.R;
 
 import me.drakeet.multitype.ItemViewBinder;
 
+public abstract class WeiboFrameBinder<Content extends WeiBoContent,SubViewHolder extends RecyclerView.ViewHolder>
+        extends ItemViewBinder<WeiBo, WeiboFrameBinder.WeiBoViewHolder> {
 
-
-
-public abstract class WeiboViewBinder
-        extends ItemViewBinder<WeiBo, WeiboViewBinder.WeiBoFrameViewHolder> {
-
-    protected abstract RecyclerView.ViewHolder onCreateSubViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent);
+    protected abstract RecyclerView.ViewHolder onCreateSubViewHolder(LayoutInflater inflater,ViewGroup parent);
 
     protected abstract void onSubBindViewHolder(RecyclerView.ViewHolder subViewHolder, WeiBoContent content);
 
 
     @NonNull
     @Override
-    protected WeiBoFrameViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
+    protected WeiBoViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
         View view = inflater.inflate(R.layout.item_weibo_frame, parent, false);
         RecyclerView.ViewHolder subViewHolder = onCreateSubViewHolder(inflater, parent);
-        return new WeiBoFrameViewHolder(view,subViewHolder);
+        return new WeiBoViewHolder(view,subViewHolder);
     }
 
-    @Override
-    protected void onBindViewHolder(@NonNull WeiBoFrameViewHolder holder, @NonNull WeiBo item) {
-        holder.avatar.setImageResource(item.user.getAvatar());
-        holder.username.setText(item.user.getNick());
+    @Override @SuppressWarnings("unchecked")
+    protected void onBindViewHolder(@NonNull WeiboFrameBinder.WeiBoViewHolder holder, @NonNull WeiBo item) {
+        holder.avatar.setImageResource(item.user.avatar);
+        holder.username.setText(item.user.name);
         holder.create_time.setText(item.createTime);
         onSubBindViewHolder(holder.mSubViewHolder, item.content);
 
     }
 
 
-    class WeiBoFrameViewHolder extends RecyclerView.ViewHolder {
+    class WeiBoViewHolder extends RecyclerView.ViewHolder {
         ImageView avatar;
         TextView username;
         FrameLayout container;
         TextView create_time;
         RecyclerView.ViewHolder mSubViewHolder;
 
-        public WeiBoFrameViewHolder(View itemView,RecyclerView.ViewHolder subViewHolder) {
+        public WeiBoViewHolder(View itemView,RecyclerView.ViewHolder subViewHolder) {
             super(itemView);
             avatar = findViewById(R.id.avatar);
             username = findViewById(R.id.username);

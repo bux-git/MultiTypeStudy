@@ -1,5 +1,7 @@
 package com.dqr.www.multitypestudy.weibo;
 
+import android.support.annotation.NonNull;
+
 /**
  * Description：
  * Author：LiuYM
@@ -7,9 +9,11 @@ package com.dqr.www.multitypestudy.weibo;
  */
 
 public  class WeiBoContent {
-    public  String content_type;
+    @NonNull
+    public final String contentType;
 
-    public WeiBoContent(String content_type) {
-        this.content_type = content_type;
+
+    protected WeiBoContent(@NonNull String contentType) {
+        this.contentType = contentType;
     }
 }
