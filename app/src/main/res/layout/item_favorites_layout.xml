@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tv_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:ellipsize="end"
+    android:maxLines="3"
+    tools:text="CO是Windows的图标文件格式，图标文件可以存储单个图案图标文件可以存储单个图案图标文件可以存储单个图案图标文件可以存储单个图案图标文件可以存储单个图案、多尺寸、多色板的图标文件。一个图标实际上是多张不同格式的图片的集合体，并且还包含了一定的透明区域。"
+></TextView>

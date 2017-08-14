@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.dqr.www.multitypestudy.blibli.BlibliActivity;
+import com.dqr.www.multitypestudy.favorites.FavoritesActivity;
 import com.dqr.www.multitypestudy.mine.MineActivity;
 import com.dqr.www.multitypestudy.multi_select.MultiSelectActivity;
 import com.dqr.www.multitypestudy.normal.NormalActivity;
@@ -49,6 +50,9 @@ public class MenuBaseActivity extends AppCompatActivity {
                 break;
             case R.id.MineActivity:
                 intent.setClass(this, MineActivity.class);
+                break;
+            case R.id.FavoritesActivity:
+                intent.setClass(this, FavoritesActivity.class);
                 break;
         }
         startActivity(intent);

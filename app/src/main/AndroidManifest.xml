@@ -36,6 +36,7 @@
         <activity android:name=".one2many.OneToManyActivity"/>
         <activity android:name=".weibo.WeiboActivity"/>
         <activity android:name=".mine.MineActivity"/>
+        <activity android:name=".favorites.FavoritesActivity"/>
     </application>
 
 </manifest>

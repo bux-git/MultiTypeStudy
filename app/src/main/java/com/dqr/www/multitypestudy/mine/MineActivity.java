@@ -7,12 +7,14 @@ import android.support.v7.widget.RecyclerView;
 
 import com.dqr.www.multitypestudy.MenuBaseActivity;
 import com.dqr.www.multitypestudy.R;
-import com.dqr.www.multitypestudy.mine.bean.BannerBean;
+import com.dqr.www.multitypestudy.common.BannerBean;
+import com.dqr.www.multitypestudy.common.BannersBean;
+import com.dqr.www.multitypestudy.constant.DataConstants;
 import com.dqr.www.multitypestudy.mine.bean.FunItemBean;
 import com.dqr.www.multitypestudy.mine.bean.FunViewBinder;
 import com.dqr.www.multitypestudy.mine.bean.HorizontalBean;
 import com.dqr.www.multitypestudy.mine.bean.PersonalBean;
-import com.dqr.www.multitypestudy.mine.binder.BannerViewBinder;
+import com.dqr.www.multitypestudy.common.BannerViewBinder;
 import com.dqr.www.multitypestudy.mine.binder.HorizontalViewBinder;
 import com.dqr.www.multitypestudy.mine.binder.PersonalViewBinder;
 
@@ -27,7 +29,7 @@ import me.drakeet.multitype.MultiTypeAdapter;
  * Date： 2017-06-02 9:58
  */
 
-public class MineActivity extends MenuBaseActivity {
+public class MineActivity extends MenuBaseActivity implements  BannerViewBinder.OnHomeClickListener{
     private static final int COUNT_SPAN = 2;
     private RecyclerView mRecyclerView;
 
@@ -43,7 +45,7 @@ public class MineActivity extends MenuBaseActivity {
 
         mAdapter = new MultiTypeAdapter();
         mItems = new ArrayList<>();
-        mAdapter.register(BannerBean.class, new BannerViewBinder());
+        mAdapter.register(BannersBean.class, new BannerViewBinder(this,mRecyclerView));
         mAdapter.register(HorizontalBean.class, new HorizontalViewBinder());
         mAdapter.register(PersonalBean.class, new PersonalViewBinder());
         mAdapter.register(FunItemBean.class, new FunViewBinder());
@@ -69,12 +71,8 @@ public class MineActivity extends MenuBaseActivity {
     }
 
     private void initData() {
-        BannerBean bannerBean = new BannerBean(new String[]{
-                "http://test.dqr2015.cn:8888/uploadFiles/201705/10731/a6692f16504a45b5b49c7c1870071aac.JPG"
-                , "http://test.dqr2015.cn:8888/uploadFiles/201705/10731/small_a6692f16504a45b5b49c7c1870071aac.JPG"
-                , "http://test.dqr2015.cn:8888/uploadFiles/201705/10731/add23362267547eaaf6c94117ea29d5c.JPG"
-                , "http://test.dqr2015.cn:8888/uploadFiles/201705/10731/small_add23362267547eaaf6c94117ea29d5c.JPG"});
-        mItems.add(bannerBean);
+        BannersBean banners = DataConstants.getBannerData();
+        mItems.add(banners);
 
         HorizontalBean horizontalBean = new HorizontalBean(StaticDataSource.getMineNavigateList(this));
         mItems.add(horizontalBean);
@@ -172,5 +170,10 @@ public class MineActivity extends MenuBaseActivity {
         mItems.add(funItemBean8);
 
         mAdapter.setItems(mItems);
+    }
+
+    @Override
+    public void onBannerClick(BannerBean bannersBean) {
+
     }
 }
