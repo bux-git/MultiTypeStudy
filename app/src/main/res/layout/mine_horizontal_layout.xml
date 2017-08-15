@@ -1,27 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 横向列表 -->
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.RecyclerView
+    android:id="@+id/rl_navigation"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/horizontal_height_home_mine">
+    android:layout_height="@dimen/horizontal_height_home_mine"
+    xmlns:android="http://schemas.android.com/apk/res/android"/>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rl_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
-    <ImageView
-        android:layout_width="10dp"
-        android:layout_height="20dp"
-        android:layout_centerVertical="true"
-        android:background="@drawable/ic_left_arrows"
-    />
-
-    <ImageView
-        android:layout_width="10dp"
-        android:layout_height="20dp"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:background="@drawable/ic_right_arrows"
-    />
-</RelativeLayout>

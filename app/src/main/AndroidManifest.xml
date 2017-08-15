@@ -37,6 +37,7 @@
         <activity android:name=".weibo.WeiboActivity"/>
         <activity android:name=".mine.MineActivity"/>
         <activity android:name=".favorites.FavoritesActivity"/>
+        <activity android:name=".home.HomeActivity"/>
     </application>
 
 </manifest>

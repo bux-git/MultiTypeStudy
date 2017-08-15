@@ -1,4 +1,4 @@
-package com.dqr.www.multitypestudy.mine.binder;
+package com.dqr.www.multitypestudy.common;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.dqr.www.multitypestudy.R;
-import com.dqr.www.multitypestudy.mine.bean.HorizontalBean;
 import com.dqr.www.multitypestudy.mine.bean.MineNavBean;
 
 import java.util.List;

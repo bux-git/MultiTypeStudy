@@ -8,14 +8,14 @@ import android.support.v7.widget.RecyclerView;
 import com.dqr.www.multitypestudy.MenuBaseActivity;
 import com.dqr.www.multitypestudy.R;
 import com.dqr.www.multitypestudy.common.BannerBean;
+import com.dqr.www.multitypestudy.common.BannerViewBinder;
 import com.dqr.www.multitypestudy.common.BannersBean;
-import com.dqr.www.multitypestudy.constant.DataConstants;
+import com.dqr.www.multitypestudy.common.StaticDataSource;
 import com.dqr.www.multitypestudy.mine.bean.FunItemBean;
 import com.dqr.www.multitypestudy.mine.bean.FunViewBinder;
-import com.dqr.www.multitypestudy.mine.bean.HorizontalBean;
+import com.dqr.www.multitypestudy.common.HorizontalBean;
 import com.dqr.www.multitypestudy.mine.bean.PersonalBean;
-import com.dqr.www.multitypestudy.common.BannerViewBinder;
-import com.dqr.www.multitypestudy.mine.binder.HorizontalViewBinder;
+import com.dqr.www.multitypestudy.common.HorizontalViewBinder;
 import com.dqr.www.multitypestudy.mine.binder.PersonalViewBinder;
 
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ import me.drakeet.multitype.MultiTypeAdapter;
  * Date： 2017-06-02 9:58
  */
 
-public class MineActivity extends MenuBaseActivity implements  BannerViewBinder.OnHomeClickListener{
+public class MineActivity extends MenuBaseActivity implements BannerViewBinder.OnHomeClickListener {
     private static final int COUNT_SPAN = 2;
     private RecyclerView mRecyclerView;
 
@@ -45,7 +45,7 @@ public class MineActivity extends MenuBaseActivity implements  BannerViewBinder.
 
         mAdapter = new MultiTypeAdapter();
         mItems = new ArrayList<>();
-        mAdapter.register(BannersBean.class, new BannerViewBinder(this,mRecyclerView));
+        mAdapter.register(BannersBean.class, new BannerViewBinder(this, mRecyclerView));
         mAdapter.register(HorizontalBean.class, new HorizontalViewBinder());
         mAdapter.register(PersonalBean.class, new PersonalViewBinder());
         mAdapter.register(FunItemBean.class, new FunViewBinder());
@@ -71,7 +71,7 @@ public class MineActivity extends MenuBaseActivity implements  BannerViewBinder.
     }
 
     private void initData() {
-        BannersBean banners = DataConstants.getBannerData();
+        BannersBean banners = StaticDataSource.getBannerData();
         mItems.add(banners);
 
         HorizontalBean horizontalBean = new HorizontalBean(StaticDataSource.getMineNavigateList(this));

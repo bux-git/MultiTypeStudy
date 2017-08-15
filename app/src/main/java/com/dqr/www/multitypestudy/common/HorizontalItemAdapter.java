@@ -1,4 +1,4 @@
-package com.dqr.www.multitypestudy.mine.binder;
+package com.dqr.www.multitypestudy.common;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

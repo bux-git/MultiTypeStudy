@@ -39,4 +39,8 @@
     <item android:id="@+id/FavoritesActivity"
           android:title="FavoritesActivity"
           app:showAsAction="never"></item>
+
+    <item android:id="@+id/HomeActivity"
+          android:title="HomeActivity"
+          app:showAsAction="never"></item>
 </menu>

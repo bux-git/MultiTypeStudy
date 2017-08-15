@@ -1,4 +1,6 @@
-package com.dqr.www.multitypestudy.mine.bean;
+package com.dqr.www.multitypestudy.common;
+
+import com.dqr.www.multitypestudy.mine.bean.MineNavBean;
 
 import java.util.List;
 

@@ -14,11 +14,11 @@ public class FunItemBean {
     public int title;
     public int detail;
     public boolean isEdit;
-    public byte navType;
+    public int navType;
     public int countSpan;
     public int index;
 
-    public FunItemBean(String bgImg, int defaultResId, int title, int detail, boolean isEdit, @MineNavigateType.Tab byte type, int countSpan,int index) {
+    public FunItemBean(String bgImg, int defaultResId, int title, int detail, boolean isEdit, @MineNavigateType.Tab int type, int countSpan,int index) {
         this.bgImg = bgImg;
         this.defaultResId = defaultResId;
         this.title = title;

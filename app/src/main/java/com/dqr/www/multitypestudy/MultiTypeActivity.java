@@ -26,10 +26,11 @@ public abstract class MultiTypeActivity extends MenuBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorites_layout);
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.rl_content);
+        mRecyclerView = (RecyclerView) findViewById(R.id.rl_container);
         mAdapter = new MultiTypeAdapter();
         mItems = new ArrayList<>();
 
+        mRecyclerView.setAdapter(mAdapter);
         initView();
     }
 
