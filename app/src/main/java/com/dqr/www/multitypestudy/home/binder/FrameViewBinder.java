@@ -1,5 +1,6 @@
 package com.dqr.www.multitypestudy.home.binder;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -25,7 +26,7 @@ import me.drakeet.multitype.ItemViewBinder;
 public abstract class FrameViewBinder<T> extends ItemViewBinder<FrameBean, FrameViewBinder.FrameViewHolder> {
 
     private LayoutInflater mInflater;
-
+    public Context mContext;
     /**
      * 创建子项布局
      *
@@ -34,7 +35,7 @@ public abstract class FrameViewBinder<T> extends ItemViewBinder<FrameBean, Frame
      * @param dataSize
      * @return
      */
-    public abstract View onSubCreateView(LayoutInflater inflater, ViewGroup parent, int dataSize);
+    public abstract View onSubCreateView(LayoutInflater inflater, ViewGroup parent, int dataSize,int index);
 
     /**
      * 绑定数据
@@ -50,19 +51,21 @@ public abstract class FrameViewBinder<T> extends ItemViewBinder<FrameBean, Frame
     protected FrameViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
         View view = inflater.inflate(R.layout.home_item_frame_layout, parent, false);
         mInflater = inflater;
+        mContext=parent.getContext();
         return new FrameViewHolder(view);
     }
 
     @Override
     protected void onBindViewHolder(@NonNull FrameViewBinder.FrameViewHolder holder, @NonNull FrameBean item) {
         holder.setData(item);
+        if(item.getContent().getList()==null)return;
         LinearLayout container = holder.lltContainer;
         int containerChildSize = container.getChildCount();
         int dataSize = item.getContent().getList().size();
         if (containerChildSize == 0 || containerChildSize != dataSize) {//容器有子项 且 数量与数据相同 则直接重新赋值  否则清除容器所有子View 重新添加
             container.removeAllViews();
             for(int i=0;i<dataSize;i++) {
-                View childView = onSubCreateView(mInflater, container, dataSize);
+                View childView = onSubCreateView(mInflater, container, dataSize,i);
                 if(childView!=null) {
                     container.addView(childView);
                 }

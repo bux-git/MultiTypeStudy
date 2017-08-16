@@ -14,6 +14,13 @@ import java.util.List;
 public class StaticDataSource {
 
 
+    public static final String[] IMAGES = {"https://ws1.sinaimg.cn/large/610dc034ly1fhb0t7ob2mj20u011itd9.jpg"
+            , "https://ws1.sinaimg.cn/large/610dc034ly1fhfmsbxvllj20u00u0q80.jpg"
+            , "http://7xi8d6.com1.z0.glb.clouddn.com/2017-05-05-18251898_1013302395468665_8734429858911748096_n.jpg"
+            , "https://ws1.sinaimg.cn/large/610dc034ly1fgepc1lpvfj20u011i0wv.jpg"
+            , "https://ws1.sinaimg.cn/large/610dc034ly1fgi3vd6irmj20u011i439.jpg"
+            , "http://7xi8d6.com1.z0.glb.clouddn.com/2017-04-19-17881407_1845958195665029_1132383288824954880_n.jpg"};
+
 
     /**
      * 我的页面导航按钮列表
@@ -37,24 +44,23 @@ public class StaticDataSource {
     }
 
 
-    public static BannersBean getBannerData(){
+    public static BannersBean getBannerData() {
         BannersBean beans = new BannersBean();
         List<BannerBean> beanList = new ArrayList<>();
-        BannerBean bean1 = new BannerBean("www.baidu.com","标题","https://ws1.sinaimg.cn/large/610dc034ly1fiednrydq8j20u011itfz.jpg");
+        BannerBean bean1 = new BannerBean("www.baidu.com", "标题", "https://ws1.sinaimg.cn/large/610dc034ly1fiednrydq8j20u011itfz.jpg");
         beanList.add(bean1);
-        BannerBean bean2 = new BannerBean("www.baidu.com","标题","https://ws1.sinaimg.cn/large/610dc034ly1fid5poqfznj20u011imzm.jpg");
+        BannerBean bean2 = new BannerBean("www.baidu.com", "标题", "https://ws1.sinaimg.cn/large/610dc034ly1fid5poqfznj20u011imzm.jpg");
         beanList.add(bean2);
-        BannerBean bean3 = new BannerBean("www.baidu.com","标题","https://ws1.sinaimg.cn/large/610dc034ly1fibksd2mbmj20u011iacx.jpg");
+        BannerBean bean3 = new BannerBean("www.baidu.com", "标题", "https://ws1.sinaimg.cn/large/610dc034ly1fibksd2mbmj20u011iacx.jpg");
         beanList.add(bean3);
-        BannerBean bean4 = new BannerBean("www.baidu.com","标题","https://ws1.sinaimg.cn/large/610dc034gy1fi678xgq1ij20pa0vlgo4.jpg");
+        BannerBean bean4 = new BannerBean("www.baidu.com", "标题", "https://ws1.sinaimg.cn/large/610dc034gy1fi678xgq1ij20pa0vlgo4.jpg");
         beanList.add(bean4);
-        BannerBean bean5 = new BannerBean("www.baidu.com","标题","https://ws1.sinaimg.cn/large/610dc034gy1fi502l3eqjj20u00hz41j.jpg");
+        BannerBean bean5 = new BannerBean("www.baidu.com", "标题", "https://ws1.sinaimg.cn/large/610dc034gy1fi502l3eqjj20u00hz41j.jpg");
         beanList.add(bean5);
 
         beans.setBeanList(beanList);
         return beans;
     }
-
 
 
     /**
@@ -86,7 +92,7 @@ public class StaticDataSource {
         mNaviList.add(new MineNavBean(MineNavigateType.HOME_RANKING, imgResArray[i], nameArray[i++]));
         mNaviList.add(new MineNavBean(MineNavigateType.HOME_MORE, imgResArray[i], nameArray[i++]));
 
-        HorizontalBean horizontalBean=new HorizontalBean(mNaviList);
+        HorizontalBean horizontalBean = new HorizontalBean(mNaviList);
         return horizontalBean;
     }
 }

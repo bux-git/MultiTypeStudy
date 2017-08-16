@@ -8,19 +8,26 @@ package com.dqr.www.multitypestudy.home.bean;
 
 public class FrameBean {
 
+    public enum DataType{
+        NEWS,
+        NOTE
+    }
+
     private int leftImgResId;
     private int leftTitleResId;
     private int rightTitle;
     private int rightImgReId;
     private int replaceResId;
+    private DataType type;
     private Content mContent;
 
-    public FrameBean(int leftImgResId, int leftTitleResId, int rightTitle, int rightImgReId, int replaceResId, Content content) {
+    public FrameBean(int leftImgResId, int leftTitleResId, int rightTitle, int rightImgReId, int replaceResId, DataType type, Content content) {
         this.leftImgResId = leftImgResId;
         this.leftTitleResId = leftTitleResId;
         this.rightTitle = rightTitle;
         this.rightImgReId = rightImgReId;
         this.replaceResId = replaceResId;
+        this.type = type;
         mContent = content;
     }
 
@@ -70,5 +77,13 @@ public class FrameBean {
 
     public void setContent(Content content) {
         mContent = content;
+    }
+
+    public DataType getType() {
+        return type;
+    }
+
+    public void setType(DataType type) {
+        this.type = type;
     }
 }

@@ -32,4 +32,7 @@ dependencies {
     //加载图片
     compile 'com.github.bumptech.glide:glide:3.5.2'
     compile 'jp.wasabeef:glide-transformations:2.0.2'
+
+    //圆角github
+    compile 'com.makeramen:roundedimageview:2.3.0'
 }
