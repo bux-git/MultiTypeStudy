@@ -12,6 +12,8 @@ import com.dqr.www.multitypestudy.home.bean.Note;
 
 import java.util.List;
 
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
+
 import static com.dqr.www.multitypestudy.R.id.tv_nickname;
 
 /**
@@ -20,13 +22,12 @@ import static com.dqr.www.multitypestudy.R.id.tv_nickname;
  * Date： 2017-08-16 11:02
  */
 
-public class NoteViewBinder extends FrameViewBinder<Note>{
-
+public class NoteViewBinder extends FrameViewBinder<Note> {
 
 
     @Override
-    public View onSubCreateView(LayoutInflater inflater, ViewGroup parent, int dataSize,int index) {
-        return inflater.inflate(R.layout.home_item_note_layout,parent,false);
+    public View onSubCreateView(LayoutInflater inflater, ViewGroup parent, int dataSize, int index) {
+        return inflater.inflate(R.layout.home_item_note_layout, parent, false);
     }
 
     @Override
@@ -47,10 +48,12 @@ public class NoteViewBinder extends FrameViewBinder<Note>{
 
 
         tvTitle.setText(note.getTitle());
-        tvEye.setText(note.getSee()+"");
-        tvPraise.setText(note.getCollection()+"");
-        tvComment.setText(note.getComment()+"");
+        tvEye.setText(note.getSee() + "");
+        tvPraise.setText(note.getCollection() + "");
+        tvComment.setText(note.getComment() + "");
 
+        Glide.with(mContext).load(R.drawable.user_avatar).bitmapTransform(new CropCircleTransformation(mContext))
+                .into(ivAvatar);
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override

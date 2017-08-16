@@ -10,7 +10,10 @@ public class FrameBean {
 
     public enum DataType{
         NEWS,
-        NOTE
+        NOTE,
+        LIVE,
+        ECARD,
+        EALBUM
     }
 
     private int leftImgResId;

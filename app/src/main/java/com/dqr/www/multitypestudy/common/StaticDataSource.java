@@ -12,7 +12,8 @@ import java.util.List;
 
 
 public class StaticDataSource {
-
+    //直播地址
+    public static final String LIVE_PATH="http://ivi.bupt.edu.cn/hls/hunanhd.m3u8";
 
     public static final String[] IMAGES = {"https://ws1.sinaimg.cn/large/610dc034ly1fhb0t7ob2mj20u011itd9.jpg"
             , "https://ws1.sinaimg.cn/large/610dc034ly1fhfmsbxvllj20u00u0q80.jpg"

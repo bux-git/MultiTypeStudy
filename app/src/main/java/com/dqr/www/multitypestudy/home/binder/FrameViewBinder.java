@@ -111,10 +111,22 @@ public abstract class FrameViewBinder<T> extends ItemViewBinder<FrameBean, Frame
             ivLeft.setImageResource(item.getLeftImgResId());
             tvLeftTitle.setText(item.getLeftTitleResId());
 
-            ivArrow.setImageResource(item.getRightImgReId());
-            tvMore.setText(item.getRightTitle());
 
-            tvReplace.setText(item.getReplaceResId());
+            if(item.getReplaceResId()<0){
+                tvReplace.setVisibility(View.GONE);
+            }else{
+                tvReplace.setVisibility(View.VISIBLE);
+                tvReplace.setText(item.getReplaceResId());
+            }
+
+            if(item.getRightTitle()<0){
+                lltMore.setVisibility(View.GONE);
+            }else{
+                lltMore.setVisibility(View.VISIBLE);
+                ivArrow.setImageResource(item.getRightImgReId());
+                tvMore.setText(item.getRightTitle());
+            }
+
 
         }
     }

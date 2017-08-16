@@ -35,4 +35,6 @@ dependencies {
 
     //圆角github
     compile 'com.makeramen:roundedimageview:2.3.0'
+//直播播放器
+    compile 'com.github.DevlinChiu:dcplayer:1.3'
 }
