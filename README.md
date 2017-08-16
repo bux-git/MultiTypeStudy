@@ -2,7 +2,7 @@
 ### 学习资料来源
 [Android 复杂的列表视图新写法 MultiType](http://gank.io/post/5823bcf6421aa90e799ec2ad#multitype-的特性)      
 
-![image](https://github.com/bux-git/MultiTypeStudy/blob/master/multy_type01.gif11?raw=true)        
+![image](https://github.com/bux-git/MultiTypeStudy/blob/master/multy_type01.gif?raw=true)        
 
 __HomeActivity布局思路记录__      
     观察得出：
