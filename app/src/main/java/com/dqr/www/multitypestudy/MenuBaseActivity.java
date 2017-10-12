@@ -12,6 +12,7 @@ import com.dqr.www.multitypestudy.mine.MineActivity;
 import com.dqr.www.multitypestudy.multi_select.MultiSelectActivity;
 import com.dqr.www.multitypestudy.normal.NormalActivity;
 import com.dqr.www.multitypestudy.one2many.OneToManyActivity;
+import com.dqr.www.multitypestudy.smallfarmer.FarmerHomeActivity;
 import com.dqr.www.multitypestudy.weibo.WeiboActivity;
 
 
@@ -57,6 +58,9 @@ public class MenuBaseActivity extends AppCompatActivity {
                 break;
             case R.id.HomeActivity:
                 intent.setClass(this, HomeActivity.class);
+                break;
+            case R.id.FarmerHomeActivity:
+                intent.setClass(this, FarmerHomeActivity.class);
                 break;
         }
         startActivity(intent);

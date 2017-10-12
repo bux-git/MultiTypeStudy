@@ -25,7 +25,7 @@
     </item>
 
     <item>
-        <color android:color="@android:color/white"/>
+        <color android:color="@color/color_f5"/>
     </item>
 
 </selector>

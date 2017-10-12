@@ -62,4 +62,7 @@
     <string name="home_live">直播</string>
     <string name="home_ecard">地球人名片</string>
     <string name="home_ealbum">地球人相册</string>
+
+
+    <string name="search_hint">搜索商品店铺</string>
 </resources>

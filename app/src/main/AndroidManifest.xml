@@ -43,6 +43,8 @@
         <activity android:name=".home.HomeActivity"
                   android:configChanges="orientation|screenSize|keyboardHidden"
                   android:screenOrientation="portrait"/>
+        <activity android:name=".smallfarmer.FarmerHomeActivity"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
     </application>
 
 </manifest>

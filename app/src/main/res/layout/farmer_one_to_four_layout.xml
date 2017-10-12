@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="180dp"
+              android:layout_marginTop="@dimen/default_spacing"
+              android:orientation="horizontal">
+    <TextView android:layout_width="0dp"
+              android:layout_height="match_parent"
+              android:layout_weight="1"
+              android:background="@drawable/square_border"
+              android:gravity="center"
+              android:text="农药区Hot"/>
+
+    <LinearLayout android:layout_width="0dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:orientation="vertical">
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="0dp"
+                  android:layout_weight="1"
+                  android:background="@drawable/square_border"
+                  android:gravity="center"
+                  android:text="种子"/>
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="0dp"
+                  android:layout_weight="1"
+                  android:background="@drawable/square_border"
+                  android:gravity="center"
+                  android:text="肥料"/>
+
+    </LinearLayout>
+
+    <LinearLayout android:layout_width="0dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:orientation="vertical">
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="0dp"
+                  android:layout_weight="1"
+                  android:background="@drawable/square_border"
+                  android:gravity="center"
+                  android:text="饲料"/>
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="0dp"
+                  android:layout_weight="1"
+                  android:background="@drawable/square_border"
+                  android:gravity="center"
+                  android:text="农机"/>
+
+    </LinearLayout>
+</LinearLayout>

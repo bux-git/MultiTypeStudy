@@ -7,6 +7,8 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
+
     <style name="Simple"/>
 
     <style name="Simple.Frame">
