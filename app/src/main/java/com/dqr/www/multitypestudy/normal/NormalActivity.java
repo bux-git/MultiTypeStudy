@@ -3,10 +3,10 @@ package com.dqr.www.multitypestudy.normal;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 
 import com.dqr.www.multitypestudy.MenuBaseActivity;
 import com.dqr.www.multitypestudy.R;
+import com.dqr.www.multitypestudy.widget.XRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,18 +30,17 @@ public class NormalActivity extends MenuBaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        RecyclerView recyclerView= (RecyclerView) findViewById(R.id.rl_content);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        XRecyclerView recyclerView= (XRecyclerView) findViewById(R.id.rl_content);
 
+        items = new ArrayList<>();
         mAdapter = new MultiTypeAdapter();
+
         mAdapter.register(TextItem.class, new TextViewBinder());
         mAdapter.register(ImageItem.class, new ImageItemViewBinder());
         mAdapter.register(RichItem.class, new RichItemViewBinder());
-        recyclerView.setAdapter(mAdapter);
 
 
 
-        items = new ArrayList<>();
         for(int i=0;i<20;i++){
             TextItem textItem = new TextItem("TextItem:"+i);
             items.add(textItem);
@@ -55,10 +54,12 @@ public class NormalActivity extends MenuBaseActivity {
             items.add(richItem);
 
         }
-
-
         mAdapter.setItems(items);
-        mAdapter.notifyDataSetChanged();
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        recyclerView.setAdapter(mAdapter);
+
 
     }
 }

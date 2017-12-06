@@ -21,7 +21,13 @@ public class PostItemDecoration extends RecyclerView.ItemDecoration {
     public void getItemOffsets(
             Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
         int position = parent.getChildLayoutPosition(view);
-        if (spanSizeLookup.getSpanSize(position) == 1) {
+        //第一个和最后一个不用计算 不属于外部List集合
+        if(position==0||position>parent.getAdapter().getItemCount()-2) {
+            return;
+
+        }
+        //由于recyclerView position比List集合要大一  故减去1
+        if (spanSizeLookup.getSpanSize(--position) == 1) {
             outRect.left = space;
             if (position % 2 == 0) {
                 outRect.right = space;

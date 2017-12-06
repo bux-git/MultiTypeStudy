@@ -2,10 +2,12 @@ package com.dqr.www.multitypestudy.smallfarmer;
 
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -27,6 +29,7 @@ import com.dqr.www.multitypestudy.smallfarmer.binder.SingleItem2Binder;
 import com.dqr.www.multitypestudy.smallfarmer.binder.SingleItem3Binder;
 import com.dqr.www.multitypestudy.smallfarmer.binder.SingleItemBinder;
 import com.dqr.www.multitypestudy.util.MathUtils;
+import com.dqr.www.multitypestudy.widget.XRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,12 +43,12 @@ import me.drakeet.multitype.MultiTypeAdapter;
  */
 
 public class FarmerHomeActivity extends AppCompatActivity implements BannerViewBinder.OnHomeClickListener {
-
+    private static final String TAG = "FarmerHomeActivity";
     private static final int COUNT_SPAN = 4;
 
     private LinearLayout mLltTitle;
 
-    private RecyclerView mRecyclerView;
+    private XRecyclerView mRecyclerView;
     private MultiTypeAdapter mAdapter;
     private List<Object> mItems;
     GridLayoutManager layoutManager;
@@ -61,12 +64,11 @@ public class FarmerHomeActivity extends AppCompatActivity implements BannerViewB
         setContentView(R.layout.activity_farmerhome_layout);
 
         mLltTitle = (LinearLayout) findViewById(R.id.lltTitle);
-
-        mRecyclerView = (RecyclerView) findViewById(R.id.rl_content);
+        mRecyclerView = (XRecyclerView) findViewById(R.id.rl_content);
         mAdapter = new MultiTypeAdapter();
         mItems = new ArrayList<>();
 
-        mRecyclerView.setAdapter(mAdapter);
+
         initView();
         initData();
     }
@@ -82,6 +84,7 @@ public class FarmerHomeActivity extends AppCompatActivity implements BannerViewB
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
+                Log.d(TAG, "onScrolled: "+dy);
                 setToolBarAlpha(dy);
             }
         });
@@ -91,6 +94,7 @@ public class FarmerHomeActivity extends AppCompatActivity implements BannerViewB
         GridLayoutManager.SpanSizeLookup spanSizeLookup = new GridLayoutManager.SpanSizeLookup() {
             @Override
             public int getSpanSize(int position) {
+                Log.d(TAG, "position:"+position +" itemSize:"+mItems.size());
                 if (mItems.get(position) instanceof SingleItemBean) {
                     return 2;
                 } else if (mItems.get(position) instanceof BottomTagBean) {
@@ -102,6 +106,10 @@ public class FarmerHomeActivity extends AppCompatActivity implements BannerViewB
 
         layoutManager.setSpanSizeLookup(spanSizeLookup);
         mRecyclerView.setLayoutManager(layoutManager);
+        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setPullLoadEnable(true);
+        mRecyclerView.setPullRefreshEnable(true);
+
         mAdapter.register(BannersBean.class, new BannerViewBinder(this, mRecyclerView));//轮播图
         mAdapter.register(SingleItemBean.class, new SingleItemBinder());//单个选项
         mAdapter.register(OneToFourBean.class, new OneToFourItemBinder());//一拖四布局
@@ -110,6 +118,28 @@ public class FarmerHomeActivity extends AppCompatActivity implements BannerViewB
         mAdapter.register(SingleItem3Bean.class, new SingleItem3Binder());//类型3
         mAdapter.register(BottomTagBean.class, new BottomTagItemBinder());//底部Tag
 
+
+        mRecyclerView.setLoadingListener(new XRecyclerView.LoadingListener() {
+            @Override
+            public void onRefresh() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mRecyclerView.stopRefresh();
+                    }
+                }, 2000);
+            }
+
+            @Override
+            public void onLoadMore() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mRecyclerView.stopLoadMore();
+                    }
+                }, 2000);
+            }
+        });
     }
 
 
@@ -163,14 +193,17 @@ public class FarmerHomeActivity extends AppCompatActivity implements BannerViewB
      * 设置ToolBarAlpha
      */
     private void setToolBarAlpha(int dy) {
-        int alpha;
+        float alpha;
 
         int position = layoutManager.findFirstVisibleItemPosition();
-        if (position == 0) {//第一项
+        if(position==0) {
+            return;
+        }
+        if (position == 1) {//第一项
             View view = layoutManager.findViewByPosition(position);
             Rect rect = new Rect();
             view.getLocalVisibleRect(rect);//相对于View左上角为原点的显示区域左上角坐标
-            if (rect.top <= mBannerHeight + 200) {
+            if (rect.top <= mBannerHeight) {
                 mTotalDy += dy;
             }
         } else {
@@ -180,11 +213,14 @@ public class FarmerHomeActivity extends AppCompatActivity implements BannerViewB
             if (mTotalDy < 0) {
                 mTotalDy = 0;
             }
-            alpha = (int) MathUtils.mul(mScale, Math.abs(mTotalDy));
+           // alpha = (int) MathUtils.mul(mScale, Math.abs(mTotalDy));
         } else {
-            alpha = 255;
+           // alpha = 255;
         }
-        mLltTitle.getBackground().mutate().setAlpha(alpha);
+        alpha=mTotalDy*1f/mBannerHeight;
+        Log.d(TAG, "setToolBarAlpha: "+alpha);
+        mLltTitle.setAlpha(alpha);
+       // mLltTitle.getBackground().mutate().setAlpha(alpha);
     }
 
 }

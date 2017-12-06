@@ -2,7 +2,9 @@ package com.dqr.www.multitypestudy.blibli;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SnapHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +40,8 @@ public class PostListViewBinder extends ItemViewBinder<PostList,PostListViewBind
             super(itemView);
             mRecyclerView = (RecyclerView) itemView.findViewById(R.id.rl_post_list);
             mRecyclerView.setLayoutManager(new LinearLayoutManager(itemView.getContext(),LinearLayoutManager.HORIZONTAL,false));
+            SnapHelper snapHelper = new PagerSnapHelper();
+            snapHelper.attachToRecyclerView(mRecyclerView);
             mPostListAdapter = new PostListAdapter();
             mRecyclerView.setAdapter(mPostListAdapter);
 

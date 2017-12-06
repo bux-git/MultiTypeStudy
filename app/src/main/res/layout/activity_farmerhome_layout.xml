@@ -2,14 +2,13 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             android:background="@color/black_9"
              android:orientation="vertical">
 
-    <android.support.v7.widget.RecyclerView
+    <com.dqr.www.multitypestudy.widget.XRecyclerView
         android:id="@+id/rl_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    </android.support.v7.widget.RecyclerView>
+    </com.dqr.www.multitypestudy.widget.XRecyclerView>
     <include layout="@layout/farmer_title_layout"></include>
 
 </FrameLayout>

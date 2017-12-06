@@ -16,9 +16,10 @@ public class FunItemBean {
     public boolean isEdit;
     public int navType;
     public int countSpan;
-    public int index;
+    public boolean leftSpace;
+    public boolean rightSpace;
 
-    public FunItemBean(String bgImg, int defaultResId, int title, int detail, boolean isEdit, @MineNavigateType.Tab int type, int countSpan,int index) {
+    public FunItemBean(String bgImg, int defaultResId, int title, int detail, boolean isEdit, @MineNavigateType.Tab int type, int countSpan, boolean leftSpace,boolean rightSpace) {
         this.bgImg = bgImg;
         this.defaultResId = defaultResId;
         this.title = title;
@@ -26,6 +27,7 @@ public class FunItemBean {
         this.isEdit = isEdit;
         this.navType = type;
         this.countSpan = countSpan;
-        this.index=index;
+        this.leftSpace=leftSpace;
+        this.rightSpace=rightSpace;
     }
 }

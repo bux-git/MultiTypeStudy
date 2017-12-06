@@ -88,7 +88,8 @@ public class MineActivity extends MenuBaseActivity implements BannerViewBinder.O
                 , true
                 , MineNavigateType.VIP
                 , 1
-                , 1);
+                , true
+        ,false);
         //地球人收益
         FunItemBean funItemBean2 = new FunItemBean(""
                 , R.drawable.bg_mine_yield
@@ -97,7 +98,8 @@ public class MineActivity extends MenuBaseActivity implements BannerViewBinder.O
                 , true
                 , MineNavigateType.YIELD
                 , 1
-                , 2);
+                , true
+                ,true);
 
         //成长路程
         FunItemBean funItemBean3 = new FunItemBean(""
@@ -107,7 +109,8 @@ public class MineActivity extends MenuBaseActivity implements BannerViewBinder.O
                 , false
                 , MineNavigateType.DIARY
                 , 2
-                , 3);
+                , true
+        ,true);
 
         //时光相册
         FunItemBean funItemBean4 = new FunItemBean(""
@@ -117,7 +120,8 @@ public class MineActivity extends MenuBaseActivity implements BannerViewBinder.O
                 , true
                 , MineNavigateType.ALBUM
                 , 1
-                , 4);
+                , true
+        ,false);
 
         //生活视频
         FunItemBean funItemBean5 = new FunItemBean(""
@@ -127,7 +131,8 @@ public class MineActivity extends MenuBaseActivity implements BannerViewBinder.O
                 , true
                 , MineNavigateType.VIDEO
                 , 1
-                , 5);
+                , true
+        ,true);
 
 
         //地球人名片
@@ -138,7 +143,8 @@ public class MineActivity extends MenuBaseActivity implements BannerViewBinder.O
                 , true
                 , MineNavigateType.INTRO
                 , 2
-                , 6);
+                , true
+        ,true);
 
         //智能生活
         FunItemBean funItemBean7 = new FunItemBean(""
@@ -148,7 +154,8 @@ public class MineActivity extends MenuBaseActivity implements BannerViewBinder.O
                 , true
                 , MineNavigateType.SMART_LIFE
                 , 1
-                , 7);
+                , true
+        ,false);
 
         //祝福视频
         FunItemBean funItemBean8 = new FunItemBean(""
@@ -158,7 +165,8 @@ public class MineActivity extends MenuBaseActivity implements BannerViewBinder.O
                 , true
                 , MineNavigateType.NEW_YEAR_VIDEO
                 , 1
-                , 8);
+                , true
+        ,true);
 
         mItems.add(funItemBean1);
         mItems.add(funItemBean2);

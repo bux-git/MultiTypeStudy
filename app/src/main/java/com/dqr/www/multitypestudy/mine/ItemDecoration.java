@@ -33,17 +33,22 @@ public class ItemDecoration extends RecyclerView.ItemDecoration {
     public void getItemOffsets(
             Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
         int position = parent.getChildLayoutPosition(view);
+        //默认有刷新头部和加载更多底部view 即有2项View不是mList中的View
+            //第一个和最后一个不属于外部list中的
+            if(position==0||position>mList.size()){
+                return;
+            }
+           position= --position;//減去头部View
+
         if (mList.get(position) instanceof FunItemBean) {
             FunItemBean itemBean = (FunItemBean) mList.get(position);
-            if (itemBean.countSpan == 2) {
-                outRect.left = space;
-                outRect.right = space;
-            } else {
-                outRect.left = space;
-                if ("2,5,8,11,14".contains(itemBean.index+"")) {
+
+                if(itemBean.leftSpace) {
+                    outRect.left = space;
+                }
+                if(itemBean.rightSpace){
                     outRect.right = space;
                 }
-            }
         }
 
     }

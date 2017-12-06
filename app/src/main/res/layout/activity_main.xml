@@ -7,10 +7,10 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
     tools:context="com.dqr.www.multitypestudy.MenuBaseActivity">
-    <android.support.v7.widget.RecyclerView
+    <com.dqr.www.multitypestudy.widget.XRecyclerView
         android:id="@+id/rl_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </android.support.v7.widget.RecyclerView>
+    </com.dqr.www.multitypestudy.widget.XRecyclerView>
 </LinearLayout>
