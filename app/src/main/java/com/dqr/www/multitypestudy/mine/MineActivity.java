@@ -3,20 +3,20 @@ package com.dqr.www.multitypestudy.mine;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 
 import com.dqr.www.multitypestudy.MenuBaseActivity;
 import com.dqr.www.multitypestudy.R;
 import com.dqr.www.multitypestudy.common.BannerBean;
 import com.dqr.www.multitypestudy.common.BannerViewBinder;
 import com.dqr.www.multitypestudy.common.BannersBean;
+import com.dqr.www.multitypestudy.common.HorizontalBean;
+import com.dqr.www.multitypestudy.common.HorizontalViewBinder;
 import com.dqr.www.multitypestudy.common.StaticDataSource;
 import com.dqr.www.multitypestudy.mine.bean.FunItemBean;
 import com.dqr.www.multitypestudy.mine.bean.FunViewBinder;
-import com.dqr.www.multitypestudy.common.HorizontalBean;
 import com.dqr.www.multitypestudy.mine.bean.PersonalBean;
-import com.dqr.www.multitypestudy.common.HorizontalViewBinder;
 import com.dqr.www.multitypestudy.mine.binder.PersonalViewBinder;
+import com.dqr.www.multitypestudy.widget.XRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +31,7 @@ import me.drakeet.multitype.MultiTypeAdapter;
 
 public class MineActivity extends MenuBaseActivity implements BannerViewBinder.OnHomeClickListener {
     private static final int COUNT_SPAN = 2;
-    private RecyclerView mRecyclerView;
+    private XRecyclerView mRecyclerView;
 
     private MultiTypeAdapter mAdapter;
     private List<Object> mItems;
@@ -41,7 +41,7 @@ public class MineActivity extends MenuBaseActivity implements BannerViewBinder.O
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mRecyclerView = (RecyclerView) findViewById(R.id.rl_content);
+        mRecyclerView = (XRecyclerView) findViewById(R.id.rl_content);
 
         mAdapter = new MultiTypeAdapter();
         mItems = new ArrayList<>();
@@ -66,7 +66,22 @@ public class MineActivity extends MenuBaseActivity implements BannerViewBinder.O
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.addItemDecoration(decoration);
         mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setLoadingMoreEnabled(true);
+        mRecyclerView.setPullLoadEnable(true);
 
+        mRecyclerView.setLoadingListener(new XRecyclerView.LoadingListener() {
+            @Override
+            public void onRefresh() {
+
+            }
+
+            @Override
+            public void onLoadMore() {
+               PersonalBean personalBean = new PersonalBean("http://test.dqr2015.cn:8888/uploadFiles/201705/10731/a6692f16504a45b5b49c7c1870071aac.JPG", "AA0000000", "地球人");
+                mItems.add(personalBean);
+                mAdapter.setItems(mItems);
+            }
+        });
 
     }
 

@@ -26,6 +26,7 @@ import me.drakeet.multitype.MultiTypeAdapter;
  *
  */
 public class XRecyclerView extends RecyclerView {
+
     private static final String TAG = "XRecyclerView";
     private ArrayList<View> mHeaderViews = new ArrayList<>();
     private WrapAdapter mWrapAdapter;
@@ -65,7 +66,7 @@ public class XRecyclerView extends RecyclerView {
         mFootView = new XListViewFooter(getContext());
 
         mFootView.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        mFootView.setVisibility(GONE);
+        //mFootView.setVisibility(GONE);
     }
 
     public void addHeaderView(View view) {
@@ -88,11 +89,8 @@ public class XRecyclerView extends RecyclerView {
 
     //判断是否是XRecyclerView保留的itemViewType
     private boolean isReservedItemViewType(int itemViewType) {
-        if (itemViewType == TYPE_REFRESH_HEADER || itemViewType == TYPE_FOOTER || sHeaderTypes.contains(itemViewType)) {
-            return true;
-        } else {
-            return false;
-        }
+        return itemViewType == TYPE_REFRESH_HEADER || itemViewType == TYPE_FOOTER ||
+                sHeaderTypes.contains(itemViewType);
     }
 
 
@@ -164,7 +162,7 @@ public class XRecyclerView extends RecyclerView {
     @Override
     public void setAdapter(Adapter adapter) {
 
-        if(this.adapter!=null){
+        if (this.adapter != null) {
             this.adapter.unregisterAdapterDataObserver(mDataObserver);
         }
 
@@ -196,7 +194,7 @@ public class XRecyclerView extends RecyclerView {
                     && layoutManager.getItemCount() > layoutManager.getChildCount()
                     && mFootView.getState() != XListViewFooter.STATE__NO_MORE
                     && mFootView.getState() != XListViewFooter.STATE_LOADING
-                    && mRefreshHeader.getState() != mRefreshHeader.STATE_REFRESHING) {
+                    && mRefreshHeader.getState() != XListViewHeader.STATE_REFRESHING) {
 
                 if (mFootView instanceof XListViewFooter) {
                     startLoadMore();
@@ -210,7 +208,7 @@ public class XRecyclerView extends RecyclerView {
     public boolean onTouchEvent(MotionEvent ev) {
         LayoutManager manager = getLayoutManager();
         int position = -1;
-        int top=-1;
+        int top = -1;
         if (mLastY == -1) {
             mLastY = ev.getRawY();
         }
@@ -230,7 +228,7 @@ public class XRecyclerView extends RecyclerView {
 
                 }
                 View view = manager.getChildAt(0);
-                if(view!=null){
+                if (view != null) {
                     top = view.getTop();
                 }
 
@@ -370,9 +368,9 @@ public class XRecyclerView extends RecyclerView {
             if (adapter != null) {
                 adapterCount = adapter.getItemCount();
                 if (adjPosition < adapterCount) {
-                    if(adapter instanceof MultiTypeAdapter){
-                        adapter.onBindViewHolder(holder, adjPosition,null);
-                    }else{
+                    if (adapter instanceof MultiTypeAdapter) {
+                        adapter.onBindViewHolder(holder, adjPosition, null);
+                    } else {
                         adapter.onBindViewHolder(holder, adjPosition);
                     }
 
@@ -444,7 +442,7 @@ public class XRecyclerView extends RecyclerView {
             if (manager instanceof GridLayoutManager) {
 
                 final GridLayoutManager gridManager = ((GridLayoutManager) manager);
-                final GridLayoutManager.SpanSizeLookup oldSpanSizeLookup= gridManager.getSpanSizeLookup();
+                final GridLayoutManager.SpanSizeLookup oldSpanSizeLookup = gridManager.getSpanSizeLookup();
 
                 gridManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
                     @Override
@@ -488,14 +486,16 @@ public class XRecyclerView extends RecyclerView {
                 StaggeredGridLayoutManager.LayoutParams p = (StaggeredGridLayoutManager.LayoutParams) lp;
                 p.setFullSpan(true);
             }
-            if(!isHeader(holder.getLayoutPosition()) && !isRefreshHeader(holder.getLayoutPosition()) && !isFooter(holder.getLayoutPosition())) {
+            if (!isHeader(holder.getLayoutPosition()) && !isRefreshHeader(holder.getLayoutPosition()) && !isFooter(holder.getLayoutPosition())
+                    && !isReservedItemViewType(holder.getItemViewType())) {
                 adapter.onViewAttachedToWindow(holder);
             }
         }
 
         @Override
         public void onViewDetachedFromWindow(ViewHolder holder) {
-            if(!isHeader(holder.getLayoutPosition()) && !isRefreshHeader(holder.getLayoutPosition()) && !isFooter(holder.getLayoutPosition())) {
+            if (!isHeader(holder.getLayoutPosition()) && !isRefreshHeader(holder.getLayoutPosition()) && !isFooter(holder.getLayoutPosition())
+                    && !isReservedItemViewType(holder.getItemViewType())) {
                 adapter.onViewDetachedFromWindow(holder);
             }
         }
@@ -503,14 +503,16 @@ public class XRecyclerView extends RecyclerView {
         @Override
         public void onViewRecycled(ViewHolder holder) {
 
-            if(!isHeader(holder.getLayoutPosition()) && !isRefreshHeader(holder.getLayoutPosition()) && !isFooter(holder.getLayoutPosition())) {
+            if (!isHeader(holder.getLayoutPosition()) && !isRefreshHeader(holder.getLayoutPosition()) && !isFooter(holder.getLayoutPosition())
+                    && !isReservedItemViewType(holder.getItemViewType())) {
                 adapter.onViewRecycled(holder);
             }
         }
 
         @Override
         public boolean onFailedToRecycleView(ViewHolder holder) {
-            if(!isHeader(holder.getLayoutPosition()) && !isRefreshHeader(holder.getLayoutPosition()) && !isFooter(holder.getLayoutPosition())) {
+            if (!isHeader(holder.getLayoutPosition()) && !isRefreshHeader(holder.getLayoutPosition()) && !isFooter(holder.getLayoutPosition())
+                    && !isReservedItemViewType(holder.getItemViewType())) {
                 return adapter.onFailedToRecycleView(holder);
             }
             return super.onFailedToRecycleView(holder);
@@ -592,5 +594,4 @@ public class XRecyclerView extends RecyclerView {
             valueAnimator.start();
         }
     }
-
 }
